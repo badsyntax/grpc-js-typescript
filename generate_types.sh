@@ -5,14 +5,16 @@ TS_OUT_DIR="./src"
 IN_DIR="./proto"
 PROTOC="$(npm bin)/grpc_tools_node_protoc"
 PROTOC_GEN_TS="$(npm bin)/protoc-gen-ts"
+FOO="$(npm bin)/grpc_tools_node_protoc_plugin"
 
 mkdir -p "$OUT_DIR"
+mkdir -p "$TS_OUT_DIR"
 
 $PROTOC \
-    -I=./ \
+    -I="./" \
     --plugin=protoc-gen-ts=$PROTOC_GEN_TS \
     --js_out=import_style=commonjs:$OUT_DIR \
-    --grpc_out=:$OUT_DIR \
+    --grpc_out=$FOO:$OUT_DIR \
     --ts_out=service=grpc-node:$TS_OUT_DIR \
     "$IN_DIR"/*.proto
 
