@@ -1,4 +1,4 @@
 node_modules
 generated
 *.js
-# proto/**/*.ts
+proto/**/*.ts
