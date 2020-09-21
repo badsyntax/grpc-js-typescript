@@ -2,7 +2,12 @@
 
 This example shows how to use `@grpc/grpc-js` to build a fully typed CLI chat application that runs on Node.js.
 
-It uses `@grpc/proto-loader` to load the protobuf files at runtime, which uses `protobufjs` instead of `google-protobuf`. No proto compiler is used. `@grpc/proto-loader` to also used to generate the  types.
+It uses `@grpc/proto-loader` to load the protobuf files at runtime, which uses `protobufjs` instead of `google-protobuf`. 
+
+`@grpc/proto-loader` to used to [generate the  types](https://github.com/grpc/grpc-node/pull/1474).
+
+_The proto compiler is not used._
+
 
 ## App layout
 
