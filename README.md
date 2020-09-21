@@ -1,20 +1,12 @@
 # grpc-js types
 
-An example repo showing how to generate grpc typescript definitions for use with @grpc/grpc-js.
+This repo shows various different methods of working with TypeScript & gRPC (using `@grpc/grpc-js`).
 
-It's a bit hacky due to the replacement of the imports.
+## Examples
 
-## Generating the types
+Each example is a separate application. Refer to the README in each project for more information.
 
-First, install the npm deps:
-
-```sh
-npm install
-```
-
-Now chose how you want to generate the types:
-
-- Shell script: `./generate_types.sh`
-- Gradle: `./gradlew generateProto`
-
-Both approaches will generate the same types.
+- [grpc-proto-loader](./examples/grpc-proto-loader) - Uses the proto loader to generate the types (no proto compiler used)
+- [ts-protoc-gen](./examples/ts-protoc-gen) - Uses the proto compiler & `ts-protoc-gen` to generate the types
+- [grpc-web](./examples/grpc-web) - Uses the proto compiler & `ts-protoc-gen` to generate the types
+- [gradle-ts-protoc-gen](./examples/gradle-ts-protoc-gen) - Uses Gradle, the proto compiler & `ts-protoc-gen` to generate the types

@@ -1,0 +1,82 @@
+{
+  "name": "grpc-web-example",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "build": "npm run build:typescript && npm run build:webpack",
+    "build:typescript": "tsc -p .",
+    "build:proto": "./compile-proto.sh",
+    "build:webpack": "webpack client.js",
+    "watch:typescript": "npm run build:typescript -- -w",
+    "watch:webpack": "npm run build:webpack -- -w",
+    "clean": "rm -rf src out",
+    "prebuild:typescript": "npm run build:proto",
+    "lint": "npm run lint:prettier && npm run lint:eslint",
+    "lint:prettier": "prettier --check \"**/*.{ts,js,json,svg,md,yml}\"",
+    "lint:eslint": "eslint . --ext .js,.ts",
+    "lint:fix": "npm run lint:fix:prettier && npm run lint:eslint -- --fix",
+    "lint:fix:prettier": "prettier --write '**/*.{ts,tsx,js,json,svg,md,yml}'",
+    "start:server": "node server",
+    "start:proxy": "docker run -d -p 8080:8080 -v \"$(pwd)\"/envoy.yaml:/etc/envoy/envoy.yaml:ro envoyproxy/envoy:v1.15.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@grpc/grpc-js": "^1.1.7",
+    "@grpc/proto-loader": "^0.6.0-pre9",
+    "@tsconfig/node12": "^1.0.7",
+    "@types/google-protobuf": "^3.7.3",
+    "@types/node": "^14.11.1",
+    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@typescript-eslint/parser": "^4.1.1",
+    "eslint": "^7.9.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "google-protobuf": "^3.13.0",
+    "grpc-tools": "^1.9.1",
+    "grpc-web": "^1.2.1",
+    "prettier": "^2.1.2",
+    "prettier-plugin-organize-imports": "^1.1.1",
+    "protoc-gen-grpc-web": "^1.2.0",
+    "ts-protoc-gen": "^0.13.0",
+    "typescript": "^4.0.3",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  },
+  "eslintConfig": {
+    "ignorePatterns": [
+      "**/*.js",
+      "proto/*.ts",
+      "generated"
+    ],
+    "env": {
+      "browser": false,
+      "es6": true,
+      "node": true
+    },
+    "parserOptions": {
+      "project": "./tsconfig.json",
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "extends": [
+      "plugin:@typescript-eslint/recommended",
+      "prettier/@typescript-eslint",
+      "plugin:prettier/recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings",
+      "plugin:import/typescript"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 2,
+    "printWidth": 80,
+    "useTabs": false
+  }
+}

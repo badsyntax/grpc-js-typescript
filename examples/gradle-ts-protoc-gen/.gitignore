@@ -1,0 +1,14 @@
+node_modules
+*.js
+proto/*.ts
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+
+# Eclipse files
+.settings
+.classpath
+.project

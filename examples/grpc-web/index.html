@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>gRPC-Web Example</title>
+    <script src="./dist/main.js"></script>
+    <style type="text/css">
+      #submit-message {
+        display: none;
+      }
+      #messages {
+        margin-bottom: 0.5rem;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        margin: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="container">
+      <div id="messages"></div>
+      <form id="submit-name" action="#">
+        <p>Enter your name to join the chat</p>
+        <input autofocus placeholder="Enter your name..." type="text" id="name" />
+        <button type="submit">Submit</button>
+      </form>
+      <form id="submit-message" action="#">
+        Chat
+        <input autofocus placeholder="Type a message..." id="message" type="text" />
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </body>
+</html>
