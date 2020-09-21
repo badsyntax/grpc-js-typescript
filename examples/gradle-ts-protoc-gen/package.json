@@ -9,7 +9,7 @@
     "build:proto": "./gradlew generateProto",
     "watch": "npm run build:typescript -- -w",
     "prewatch": "npm run build:proto",
-    "prebuild:typescript": "npm run build:proto",
+    "prebuild": "npm run build:proto",
     "lint": "npm run lint:prettier && npm run lint:eslint",
     "lint:prettier": "prettier --check \"**/*.{ts,js,json,svg,md,yml}\"",
     "lint:eslint": "eslint . --ext .js,.ts",

@@ -11,7 +11,7 @@
     "watch:typescript": "npm run build:typescript -- -w",
     "watch:webpack": "npm run build:webpack -- -w",
     "clean": "rm -rf src out",
-    "prebuild:typescript": "npm run build:proto",
+    "prebuild": "npm run build:proto",
     "lint": "npm run lint:prettier && npm run lint:eslint",
     "lint:prettier": "prettier --check \"**/*.{ts,js,json,svg,md,yml}\"",
     "lint:eslint": "eslint . --ext .js,.ts",
