@@ -1,6 +1,6 @@
 # grpc-js types
 
-An example repo showing how to generate grpc typescript definitions for use with `@grpc/grpc-js`.
+This repo shows various different methods of working with TypeScript & gRPC (using `@grpc/grpc-js`).
 
 ## Examples
 
