@@ -43,8 +43,7 @@
   },
   "eslintConfig": {
     "ignorePatterns": [
-      "**/*.js",
-      "generated"
+      "**/*.js"
     ],
     "env": {
       "browser": false,
