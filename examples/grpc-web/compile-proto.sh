@@ -8,9 +8,6 @@ PROTOC_GEN_TS_PATH="$(npm bin)/protoc-gen-ts"
 PROTOC_GEN_GRPC_PATH="$(npm bin)/grpc_tools_node_protoc_plugin"
 PROTOC_GEN_GRPC_WEB_PATH="$(npm bin)/protoc-gen-grpc-web"
 
-mkdir -p "$OUT_DIR"
-mkdir -p "$TS_OUT_DIR"
-
 # generate grpc-web files & types
 $PROTOC \
     -I="./" \

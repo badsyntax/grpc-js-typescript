@@ -7,9 +7,6 @@ PROTOC="$(npm bin)/grpc_tools_node_protoc"
 PROTOC_GEN_TS_PATH="$(npm bin)/protoc-gen-ts"
 PROTOC_GEN_GRPC_PATH="$(npm bin)/grpc_tools_node_protoc_plugin"
 
-mkdir -p "$OUT_DIR"
-mkdir -p "$TS_OUT_DIR"
-
 $PROTOC \
     -I="./" \
     --plugin=protoc-gen-ts=$PROTOC_GEN_TS_PATH \
