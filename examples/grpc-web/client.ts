@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
 import { Error as GrpcWebError } from 'grpc-web';
+import { ChatClient } from './proto/chat_grpc_web_pb';
 import { ClientMessage, ServerMessage } from './proto/chat_pb';
 
 let user: string;
@@ -22,8 +23,6 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 async function initChat(user: string) {
-  const { ChatClient } = await import('./proto/chat_grpc_web_pb');
-
   const client = new ChatClient('http://' + window.location.hostname + ':8080');
 
   const clientMessage = new ClientMessage();
