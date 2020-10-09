@@ -14,4 +14,4 @@ Each example is a separate application. Refer to the README in each project for 
 
 ## Gotchas
 
-It's worth noting that both the [`ts-protoc-gen`](https://www.npmjs.com/package/ts-protoc-gen) and [`grpc_tools_node_protoc_ts`](https://www.npmjs.com/package/grpc_tools_node_protoc_ts) npm packages provide a grpc plugin binary file called `protoc-gen-ts` and this can lead to some confusion when trying out the two different packages.
+It's worth noting that both the [`ts-protoc-gen`](https://www.npmjs.com/package/ts-protoc-gen) and [`grpc_tools_node_protoc_ts`](https://www.npmjs.com/package/grpc_tools_node_protoc_ts) npm packages provide a proto compiler plugin binary file called `protoc-gen-ts` and this can lead to some confusion when trying out the two different packages.
