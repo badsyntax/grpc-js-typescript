@@ -71,13 +71,9 @@ function doServerStreamingCall() {
 
 function doClientStreamingCall() {
   const stream = client.clientStreamingCall(
-    (error?: grpc.ServiceError, serverMessage?: ServerMessage) => {
+    (error?: grpc.ServiceError) => {
       if (error) {
         console.error(error.message);
-      } else if (serverMessage) {
-        console.log(
-          `(client) Got server message: ${serverMessage.serverMessage}`
-        );
       }
     }
   );
