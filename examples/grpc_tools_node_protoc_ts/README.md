@@ -6,6 +6,7 @@ The [proto compiler](https://www.npmjs.com/package/grpc-tools) and [`grpc_tools_
 
 ## App layout
 
+- [package.json](./package.json) - Dependencies and node build scripts
 - [compile-proto.sh](./compile-proto.sh) - The proto compiler script
 - [server.ts](./server.ts) - The grpc server
 - [client.ts](./client.ts) - The grpc client
