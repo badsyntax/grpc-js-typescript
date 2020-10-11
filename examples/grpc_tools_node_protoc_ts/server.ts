@@ -29,17 +29,12 @@ const exampleServer: IExampleServer = {
 
   clientStreamingCall(
     call: grpc.ServerReadableStream<ClientMessage, ServerMessage>,
-    callback: grpc.sendUnaryData<ServerMessage>
   ) {
     call.on('data', (clientMessage: ClientMessage) => {
       console.log(
         `(server) Got client message: ${clientMessage.getClientMessage()}`
       );
     });
-
-    const serverMessage = new ServerMessage();
-    serverMessage.setServerMessage('Message from server');
-    callback(null, serverMessage);
   },
 
   bidirectionalStreamingCall(

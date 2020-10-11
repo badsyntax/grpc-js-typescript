@@ -29,12 +29,8 @@ const exampleServer: ExampleHandlers = {
   },
 
   clientStreamingCall(
-    call: grpc.ServerReadableStream<ClientMessage, ServerMessage>,
-    callback: grpc.sendUnaryData<ServerMessage>
+    call: grpc.ServerReadableStream<ClientMessage, ServerMessage>
   ) {
-    callback(null, {
-      serverMessage: 'Message from server',
-    });
     call.on('data', (clientMessage: ClientMessage) => {
       console.log(
         `(server) Got client message: ${clientMessage.clientMessage}`
