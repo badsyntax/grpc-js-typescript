@@ -1,21 +1,17 @@
 import * as grpc from '@grpc/grpc-js';
 import * as protoLoader from '@grpc/proto-loader';
-import readline from 'readline';
-import { ProtoGrpcType } from './proto/chat';
-import { ServerMessage } from './proto/chat_package/ServerMessage';
+import { argv } from 'process';
+import { ProtoGrpcType } from './proto/example';
+import { ServerMessage } from './proto/example_package/ServerMessage';
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-const packageDefinition = protoLoader.loadSync('./proto/chat.proto');
+const host = '0.0.0.0:9090';
+const packageDefinition = protoLoader.loadSync('./proto/example.proto');
 const proto = (grpc.loadPackageDefinition(
   packageDefinition
 ) as unknown) as ProtoGrpcType;
 
-const client = new proto.chat_package.Chat(
-  '0.0.0.0:9090',
+const client = new proto.example_package.ExampleServer(
+  host,
   grpc.credentials.createInsecure()
 );
 
@@ -23,25 +19,85 @@ const deadline = new Date();
 deadline.setSeconds(deadline.getSeconds() + 5);
 client.waitForReady(deadline, (error?: Error) => {
   if (error) {
-    console.log(`Client error: ${error}`);
+    console.log(`Client connect error: ${error.message}`);
   } else {
-    rl.question("What's your name? ", startChat);
+    onClientReady();
   }
 });
 
-function startChat(user: string) {
-  const channel = client.join({
-    user,
-  });
-  channel.on('data', (message: ServerMessage) => {
-    if (message.user == user) {
-      return;
+function onClientReady() {
+  switch (process.argv[process.argv.length - 1]) {
+    case '--unary':
+      doUnaryCall();
+      break;
+    case '--server-streaming':
+      doServerStreamingCall();
+      break;
+    case '--client-streaming':
+      doClientStreamingCall();
+      break;
+    case '--bidi-streaming':
+      doBidirectionalStreamingCallStreamingCall();
+      break;
+    default:
+      throw new Error('Example not specified');
+  }
+}
+
+function doUnaryCall() {
+  client.unaryCall(
+    {
+      clientMessage: 'Message from client',
+    },
+    (error?: grpc.ServiceError, serverMessage?: ServerMessage) => {
+      if (error) {
+        console.error(error.message);
+      } else if (serverMessage) {
+        console.log(
+          `(client) Got server message: ${serverMessage.serverMessage}`
+        );
+      }
     }
-    console.log(`${message.user}: ${message.text}`);
+  );
+}
+
+function doServerStreamingCall() {
+  const stream = client.serverStreamingCall({
+    clientMessage: 'Message from client',
   });
-  rl.on('line', function (text) {
-    client.send({ user, text }, () => {
-      //
-    });
+  stream.on('data', (serverMessage: ServerMessage) => {
+    console.log(`(client) Got server message: ${serverMessage.serverMessage}`);
+  });
+}
+
+function doClientStreamingCall() {
+  const stream = client.clientStreamingCall(
+    (error?: grpc.ServiceError, serverMessage?: ServerMessage) => {
+      if (error) {
+        console.error(error.message);
+      } else if (serverMessage) {
+        console.log(
+          `(client) Got server message: ${serverMessage.serverMessage}`
+        );
+      }
+    }
+  );
+  // TODO: this should be clientMessage
+  stream.write({
+    serverMessage: 'Message from client',
+  });
+}
+
+function doBidirectionalStreamingCallStreamingCall() {
+  const stream = client.bidirectionalStreamingCall();
+
+  // Server stream
+  stream.on('data', (serverMessage: ServerMessage) => {
+    console.log(`(client) Got server message: ${serverMessage.serverMessage}`);
+  });
+
+  // Client stream
+  stream.write({
+    clientMessage: 'Message from client',
   });
 }

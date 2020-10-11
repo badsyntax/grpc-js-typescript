@@ -1,6 +1,6 @@
 node_modules
-*.js
-proto/*.ts
+**/*.js
+!proto/*.js
 
 # Ignore Gradle project-specific cache directory
 .gradle

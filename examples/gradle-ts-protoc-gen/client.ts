@@ -1,44 +1,100 @@
 import * as grpc from '@grpc/grpc-js';
-import readline from 'readline';
-import { ChatClient } from './proto/chat_grpc_pb';
-import { ClientMessage, ServerMessage } from './proto/chat_pb';
+import { ExampleServerClient } from './proto/example_grpc_pb';
+import { ClientMessage, ServerMessage } from './proto/example_pb';
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+const host = '0.0.0.0:9090';
 
-const client = new ChatClient(
-  '0.0.0.0:9090',
-  grpc.credentials.createInsecure()
-);
+const client = new ExampleServerClient(host, grpc.credentials.createInsecure());
 
 const deadline = new Date();
 deadline.setSeconds(deadline.getSeconds() + 5);
 client.waitForReady(deadline, (error?: Error) => {
   if (error) {
-    console.log(`Client error: ${error}`);
+    console.log(`Client connect error: ${error.message}`);
   } else {
-    rl.question("What's your name? ", startChat);
+    onClientReady();
   }
 });
 
-function startChat(user: string) {
+function onClientReady() {
+  switch (process.argv[process.argv.length - 1]) {
+    case '--unary':
+      doUnaryCall();
+      break;
+    case '--server-streaming':
+      doServerStreamingCall();
+      break;
+    case '--client-streaming':
+      doClientStreamingCall();
+      break;
+    case '--bidi-streaming':
+      doBidirectionalStreamingCallStreamingCall();
+      break;
+    default:
+      throw new Error('Example not specified');
+  }
+}
+
+function doUnaryCall() {
   const clientMessage = new ClientMessage();
-  clientMessage.setUser(user);
-  const channel = client.join(clientMessage);
-  channel.on('data', (message: ServerMessage) => {
-    if (message.getUser() == user) {
-      return;
+  clientMessage.setClientMessage('Message from client');
+  client.unaryCall(
+    clientMessage,
+    (error: grpc.ServiceError | null, serverMessage?: ServerMessage) => {
+      if (error) {
+        console.error(error.message);
+      } else if (serverMessage) {
+        console.log(
+          `(client) Got server message: ${serverMessage.getServerMessage()}`
+        );
+      }
     }
-    console.log(`${message.getUser()}: ${message.getText()}`);
+  );
+}
+
+function doServerStreamingCall() {
+  const clientMessage = new ClientMessage();
+  clientMessage.setClientMessage('Message from client');
+  const stream = client.serverStreamingCall(clientMessage);
+  stream.on('data', (serverMessage: ServerMessage) => {
+    console.log(
+      `(client) Got server message: ${serverMessage.getServerMessage()}`
+    );
   });
-  rl.on('line', function (text) {
-    const clientMessage = new ClientMessage();
-    clientMessage.setUser(user);
-    clientMessage.setText(text);
-    client.send(clientMessage, () => {
-      //
-    });
+}
+
+function doClientStreamingCall() {
+  const stream = client.clientStreamingCall(
+    (error: grpc.ServiceError | null, serverMessage?: ServerMessage) => {
+      if (error) {
+        console.error(error.message);
+      } else if (serverMessage) {
+        console.log(
+          `(client) Got server message: ${serverMessage.getServerMessage()}`
+        );
+      }
+    }
+  );
+  const clientMessage = new ClientMessage();
+  clientMessage.setClientMessage('Message from client');
+  stream.write(clientMessage);
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setTimeout(() => {}, 1000);
+}
+
+function doBidirectionalStreamingCallStreamingCall() {
+  const stream = client.bidirectionalStreamingCall();
+
+  // Server stream
+  stream.on('data', (serverMessage: ServerMessage) => {
+    console.log(
+      `(client) Got server message: ${serverMessage.getServerMessage()}`
+    );
   });
+
+  // Client stream
+  const clientMessage = new ClientMessage();
+  clientMessage.setClientMessage('Message from client');
+  stream.write(clientMessage);
 }
