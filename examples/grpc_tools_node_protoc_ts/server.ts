@@ -54,9 +54,8 @@ const exampleServer: IExampleServer = {
 
 function getServer(): grpc.Server {
   const server = new grpc.Server();
+  // FIXME
   // The following type is broken because `IExampleServer` does not extend from `grpc.UntypedServiceImplementation`
-  // This is done to allow for class implementations of `IExampleServer`.
-
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   server.addService(ExampleService, exampleServer);

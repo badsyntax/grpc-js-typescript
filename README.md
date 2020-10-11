@@ -2,6 +2,8 @@
 
 This repo shows various different methods of working with TypeScript & gRPC (using `@grpc/grpc-js`).
 
+There are a few minor issues with each approach, so look out for `FIXME` comments that describe the issues.
+
 ## Examples
 
 Each example is a separate application. Refer to the README in each project for more information.

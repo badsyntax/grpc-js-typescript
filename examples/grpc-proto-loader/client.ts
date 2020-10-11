@@ -81,7 +81,7 @@ function doClientStreamingCall() {
       }
     }
   );
-  // TODO: this should be clientMessage
+  // FIXME: this should be clientMessage
   stream.write({
     serverMessage: 'Message from client',
   });
