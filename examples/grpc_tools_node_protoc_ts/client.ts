@@ -28,7 +28,7 @@ function onClientReady() {
       doClientStreamingCall();
       break;
     case '--bidi-streaming':
-      doBidirectionalStreamingCallStreamingCall();
+      doBidirectionalStreamingCall();
       break;
     default:
       throw new Error('Example not specified');
@@ -76,7 +76,7 @@ function doClientStreamingCall() {
   stream.write(clientMessage);
 }
 
-function doBidirectionalStreamingCallStreamingCall() {
+function doBidirectionalStreamingCall() {
   const stream = client.bidirectionalStreamingCall();
 
   // Server stream
