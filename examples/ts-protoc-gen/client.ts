@@ -74,9 +74,6 @@ function doClientStreamingCall() {
   const clientMessage = new ClientMessage();
   clientMessage.setClientMessage('Message from client');
   stream.write(clientMessage);
-
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setTimeout(() => {}, 1000);
 }
 
 function doBidirectionalStreamingCallStreamingCall() {
