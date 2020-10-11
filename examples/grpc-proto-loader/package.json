@@ -43,7 +43,8 @@
   },
   "eslintConfig": {
     "ignorePatterns": [
-      "**/*.js"
+      "**/*.js",
+      "proto/**/*.ts"
     ],
     "env": {
       "browser": false,
