@@ -4,12 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm run build:typescript",
-    "build:typescript": "tsc -p ./ --skipLibCheck",
+    "build:typescript": "tsc -p .",
     "build:proto": "./compile-proto.sh",
     "watch": "npm run build:typescript -- -w",
-    "clean": "rm -rf src out",
     "prewatch": "npm run build:proto",
     "prebuild": "npm run build:proto",
     "lint": "npm run lint:prettier && npm run lint:eslint",
