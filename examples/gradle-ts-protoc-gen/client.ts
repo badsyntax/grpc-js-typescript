@@ -1,10 +1,10 @@
 import * as grpc from '@grpc/grpc-js';
-import { ExampleServerClient } from './proto/example_grpc_pb';
+import { ExampleClient } from './proto/example_grpc_pb';
 import { ClientMessage, ServerMessage } from './proto/example_pb';
 
 const host = '0.0.0.0:9090';
 
-const client = new ExampleServerClient(host, grpc.credentials.createInsecure());
+const client = new ExampleClient(host, grpc.credentials.createInsecure());
 
 const deadline = new Date();
 deadline.setSeconds(deadline.getSeconds() + 5);

@@ -4,7 +4,7 @@ import * as grpc from '@grpc/grpc-js'
 import { ClientMessage as _example_package_ClientMessage, ClientMessage__Output as _example_package_ClientMessage__Output } from '../example_package/ClientMessage';
 import { ServerMessage as _example_package_ServerMessage, ServerMessage__Output as _example_package_ServerMessage__Output } from '../example_package/ServerMessage';
 
-export interface ExampleServerClient extends grpc.Client {
+export interface ExampleClient extends grpc.Client {
   bidirectionalStreamingCall(metadata: grpc.Metadata, options?: grpc.CallOptions): grpc.ClientDuplexStream<_example_package_ClientMessage, _example_package_ServerMessage__Output>;
   bidirectionalStreamingCall(options?: grpc.CallOptions): grpc.ClientDuplexStream<_example_package_ClientMessage, _example_package_ServerMessage__Output>;
   bidirectionalStreamingCall(metadata: grpc.Metadata, options?: grpc.CallOptions): grpc.ClientDuplexStream<_example_package_ClientMessage, _example_package_ServerMessage__Output>;
@@ -35,7 +35,7 @@ export interface ExampleServerClient extends grpc.Client {
   
 }
 
-export interface ExampleServerHandlers extends grpc.UntypedServiceImplementation {
+export interface ExampleHandlers extends grpc.UntypedServiceImplementation {
   bidirectionalStreamingCall(call: grpc.ServerDuplexStream<_example_package_ClientMessage__Output, _example_package_ServerMessage>): void;
   
   clientStreamingCall(call: grpc.ServerReadableStream<_example_package_ClientMessage__Output, _example_package_ServerMessage>, callback: grpc.sendUnaryData<_example_package_ServerMessage>): void;

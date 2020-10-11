@@ -1,7 +1,7 @@
 import * as grpc from '@grpc/grpc-js';
 import { ServiceDefinition, EnumTypeDefinition, MessageTypeDefinition } from '@grpc/proto-loader';
 
-import { ExampleServerClient as _example_package_ExampleServerClient } from './example_package/ExampleServer';
+import { ExampleClient as _example_package_ExampleClient } from './example_package/Example';
 
 type ConstructorArguments<Constructor> = Constructor extends new (...args: infer Args) => any ? Args: never;
 type SubtypeConstructor<Constructor, Subtype> = {
@@ -11,7 +11,7 @@ type SubtypeConstructor<Constructor, Subtype> = {
 export interface ProtoGrpcType {
   example_package: {
     ClientMessage: MessageTypeDefinition
-    ExampleServer: SubtypeConstructor<typeof grpc.Client, _example_package_ExampleServerClient> & { service: ServiceDefinition }
+    Example: SubtypeConstructor<typeof grpc.Client, _example_package_ExampleClient> & { service: ServiceDefinition }
     ServerMessage: MessageTypeDefinition
   }
 }

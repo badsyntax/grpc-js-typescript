@@ -1,5 +1,5 @@
 import * as grpc from '@grpc/grpc-js';
-import { ExampleServerService } from './proto/example_grpc_pb';
+import { ExampleService } from './proto/example_grpc_pb';
 import { ClientMessage, ServerMessage } from './proto/example_pb';
 
 const host = '0.0.0.0:9090';
@@ -59,7 +59,7 @@ const exampleServer = {
 
 function getServer(): grpc.Server {
   const server = new grpc.Server();
-  server.addService(ExampleServerService, exampleServer);
+  server.addService(ExampleService, exampleServer);
   return server;
 }
 

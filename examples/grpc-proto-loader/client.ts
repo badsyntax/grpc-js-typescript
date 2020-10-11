@@ -1,6 +1,5 @@
 import * as grpc from '@grpc/grpc-js';
 import * as protoLoader from '@grpc/proto-loader';
-import { argv } from 'process';
 import { ProtoGrpcType } from './proto/example';
 import { ServerMessage } from './proto/example_package/ServerMessage';
 
@@ -10,7 +9,7 @@ const proto = (grpc.loadPackageDefinition(
   packageDefinition
 ) as unknown) as ProtoGrpcType;
 
-const client = new proto.example_package.ExampleServer(
+const client = new proto.example_package.Example(
   host,
   grpc.credentials.createInsecure()
 );

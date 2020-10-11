@@ -2,12 +2,12 @@ import * as grpc from '@grpc/grpc-js';
 import * as protoLoader from '@grpc/proto-loader';
 import { ProtoGrpcType } from './proto/example';
 import { ClientMessage } from './proto/example_package/ClientMessage';
-import { ExampleServerHandlers } from './proto/example_package/ExampleServer';
+import { ExampleHandlers } from './proto/example_package/Example';
 import { ServerMessage } from './proto/example_package/ServerMessage';
 
 const host = '0.0.0.0:9090';
 
-const exampleServer: ExampleServerHandlers = {
+const exampleServer: ExampleHandlers = {
   unaryCall(
     call: grpc.ServerUnaryCall<ClientMessage, ServerMessage>,
     callback: grpc.sendUnaryData<ServerMessage>
@@ -62,7 +62,7 @@ function getServer(): grpc.Server {
     packageDefinition
   ) as unknown) as ProtoGrpcType;
   const server = new grpc.Server();
-  server.addService(proto.example_package.ExampleServer.service, exampleServer);
+  server.addService(proto.example_package.Example.service, exampleServer);
   return server;
 }
 

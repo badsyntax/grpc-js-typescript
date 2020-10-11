@@ -1,4 +1,4 @@
-# grpc-proto-loader
+# grpc-proto-loader example
 
 This example shows how to use [`@grpc/proto-loader`](https://www.npmjs.com/package/@grpc/proto-loader) & [`@grpc/grpc-js`](https://www.npmjs.com/package/@grpc/grpc-js) to build a fully typed CLI chat application that runs on Node.js.
 

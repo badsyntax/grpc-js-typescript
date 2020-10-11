@@ -19,5 +19,8 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "cSpell.language": "en-GB",
-  "cSpell.words": ["grpc"]
+  "cSpell.words": [
+    "Unary",
+    "grpc"
+  ]
 }
