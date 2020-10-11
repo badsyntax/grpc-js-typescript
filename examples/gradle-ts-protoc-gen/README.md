@@ -4,7 +4,7 @@ This examples shows how to uses [Gradle](https://gradle.org/), the [proto compil
 
 The [proto compiler](https://www.npmjs.com/package/grpc-tools) and [`ts-protoc-gen`](https://www.npmjs.com/package/ts-protoc-gen) compiler plugin are used to generate JavaScript & TypeScript files from the proto definitions. The [`protobuf-gradle-plugin`](https://github.com/google/protobuf-gradle-plugin) Gradle plugin is used to run the compiler from Gradle.
 
-The generated code uses [`google-protobuf`](https://www.npmjs.com/package/google-protobuf) & [`@grpc/grpc-js`](https://www.npmjs.com/package/@grpc/grpc-js) at runtime.
+[`google-protobuf`](https://www.npmjs.com/package/google-protobuf) & [`@grpc/grpc-js`](https://www.npmjs.com/package/@grpc/grpc-js) is used at runtime.
 
 ## App layout
 
