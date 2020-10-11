@@ -1,53 +1,75 @@
 import * as grpc from '@grpc/grpc-js';
 import * as protoLoader from '@grpc/proto-loader';
-import { ProtoGrpcType } from './proto/chat';
-import { ChatHandlers } from './proto/chat_package/Chat';
-import { ClientMessage } from './proto/chat_package/ClientMessage';
-import { ServerMessage } from './proto/chat_package/ServerMessage';
+import { ProtoGrpcType } from './proto/example';
+import { ClientMessage } from './proto/example_package/ClientMessage';
+import { ExampleHandlers } from './proto/example_package/Example';
+import { ServerMessage } from './proto/example_package/ServerMessage';
 
-const users: grpc.ServerWritableStream<ClientMessage, ServerMessage>[] = [];
-const messages: ClientMessage[] = [];
+const host = '0.0.0.0:9090';
 
-function notifyChat(message: ServerMessage) {
-  messages.push(message);
-  users.forEach((user) => {
-    user.write(message);
-  });
-}
-
-const chatService: ChatHandlers = {
-  join(call: grpc.ServerWritableStream<ClientMessage, ServerMessage>): void {
-    users.push(call);
-    notifyChat({
-      user: 'Server',
-      text: `${call.request?.user} joined`,
-    });
-  },
-  send(
+const exampleServer: ExampleHandlers = {
+  unaryCall(
     call: grpc.ServerUnaryCall<ClientMessage, ServerMessage>,
     callback: grpc.sendUnaryData<ServerMessage>
-  ): void {
+  ) {
     if (call.request) {
-      notifyChat(call.request);
-      callback(null, call.request);
+      console.log(`(server) Got client message: ${call.request.clientMessage}`);
     }
+    callback(null, {
+      serverMessage: 'Message from server',
+    });
+  },
+
+  serverStreamingCall(
+    call: grpc.ServerWritableStream<ClientMessage, ServerMessage>
+  ) {
+    call.write({
+      serverMessage: 'Message from server',
+    });
+  },
+
+  clientStreamingCall(
+    call: grpc.ServerReadableStream<ClientMessage, ServerMessage>,
+    callback: grpc.sendUnaryData<ServerMessage>
+  ) {
+    callback(null, {
+      serverMessage: 'Message from server',
+    });
+    call.on('data', (clientMessage: ClientMessage) => {
+      console.log(
+        `(server) Got client message: ${clientMessage.clientMessage}`
+      );
+    });
+  },
+
+  bidirectionalStreamingCall(
+    call: grpc.ServerDuplexStream<ClientMessage, ServerMessage>
+  ) {
+    call.write({
+      serverMessage: 'Message from server',
+    });
+    call.on('data', (clientMessage: ClientMessage) => {
+      console.log(
+        `(server) Got client message: ${clientMessage.clientMessage}`
+      );
+    });
   },
 };
 
-export function getServer(): grpc.Server {
-  const packageDefinition = protoLoader.loadSync('./proto/chat.proto');
+function getServer(): grpc.Server {
+  const packageDefinition = protoLoader.loadSync('./proto/example.proto');
   const proto = (grpc.loadPackageDefinition(
     packageDefinition
   ) as unknown) as ProtoGrpcType;
   const server = new grpc.Server();
-  server.addService(proto.chat_package.Chat.service, chatService);
+  server.addService(proto.example_package.Example.service, exampleServer);
   return server;
 }
 
 if (require.main === module) {
   const server = getServer();
   server.bindAsync(
-    '0.0.0.0:9090',
+    host,
     grpc.ServerCredentials.createInsecure(),
     (err: Error | null, port: number) => {
       if (err) {

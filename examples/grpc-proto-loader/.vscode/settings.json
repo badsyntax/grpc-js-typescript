@@ -4,10 +4,8 @@
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,
   "eslint.validate": ["javascript", "typescript"],
-  "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.organizeImports": false
+    "source.fixAll.eslint": true
   },
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -19,5 +17,5 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "cSpell.language": "en-GB",
-  "cSpell.words": ["grpc"]
+  "cSpell.words": ["grpc", "unary", "bidi"]
 }

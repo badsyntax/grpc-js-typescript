@@ -60,7 +60,7 @@ protobuf {
 }
 
 task copyGeneratedProto(type: Copy) {
-  from '$protobuf.generatedFilesBaseDir/main/ts', '$protobuf.generatedFilesBaseDir/main/js'
+  from "$protobuf.generatedFilesBaseDir/main/ts", "$protobuf.generatedFilesBaseDir/main/js"
   into 'proto'
 }
 
