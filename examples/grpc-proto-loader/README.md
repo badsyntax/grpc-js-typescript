@@ -6,6 +6,10 @@ This example shows how to use [`@grpc/proto-loader`](https://www.npmjs.com/packa
 
 _No proto compiler is used. It's all JavaScript._
 
+## Issues with this approach
+
+Client streaming message type is incorrect. See https://github.com/murgatroid99/grpc-node/pull/3. This fix is awaiting release.
+
 ## App layout
 
 - [package.json](./package.json) - Dependencies and build scripts

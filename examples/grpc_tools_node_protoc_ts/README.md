@@ -4,6 +4,10 @@ This example shows how to use the [proto compiler](https://www.npmjs.com/package
 
 The [proto compiler](https://www.npmjs.com/package/grpc-tools) and [`grpc_tools_node_protoc_ts`](https://www.npmjs.com/package/grpc_tools_node_protoc_ts) compiler plugin are used to generate JavaScript & TypeScript files from the proto definitions and [`google-protobuf`](https://www.npmjs.com/package/google-protobuf) & [`@grpc/grpc-js`](https://www.npmjs.com/package/@grpc/grpc-js) is used at runtime.
 
+## Issues with this approach
+
+The generated server type is incompatible with the gRPC service implementation.  You'll need to use `// @ts-ignore` when adding the service.
+
 ## App layout
 
 - [package.json](./package.json) - Dependencies and node build scripts
