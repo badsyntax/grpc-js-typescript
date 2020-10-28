@@ -1,6 +1,6 @@
 # ts-protoc-gen
 
-This examples shows how to use the [proto compiler](https://www.npmjs.com/package/grpc-tools), [`ts-protoc-gen`](https://www.npmjs.com/package/ts-protoc-gen) & [`@grpc/grpc-js`](https://www.npmjs.com/package/@grpc/grpc-js) to build a (not quite yet) fully typed gRPC CLI chat application that runs on Node.js.
+This examples shows how to use the [proto compiler](https://www.npmjs.com/package/grpc-tools), [`ts-protoc-gen`](https://www.npmjs.com/package/ts-protoc-gen) & [`@grpc/grpc-js`](https://www.npmjs.com/package/@grpc/grpc-js) to build a (not quite yet) fully typed gRPC CLI application that runs on Node.js.
 
 The [proto compiler](https://www.npmjs.com/package/grpc-tools) and [`ts-protoc-gen`](https://www.npmjs.com/package/ts-protoc-gen) compiler plugin are used to generate JavaScript & TypeScript files from the proto definitions. [`google-protobuf`](https://www.npmjs.com/package/google-protobuf) & [`@grpc/grpc-js`](https://www.npmjs.com/package/@grpc/grpc-js) is used at runtime.
 
