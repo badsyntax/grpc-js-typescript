@@ -1,6 +1,6 @@
 # grpc-proto-loader example
 
-This example shows how to use [`@grpc/proto-loader`](https://www.npmjs.com/package/@grpc/proto-loader) & [`@grpc/grpc-js`](https://www.npmjs.com/package/@grpc/grpc-js) to build a fully typed CLI chat application that runs on Node.js.
+This example shows how to use [`@grpc/proto-loader`](https://www.npmjs.com/package/@grpc/proto-loader) & [`@grpc/grpc-js`](https://www.npmjs.com/package/@grpc/grpc-js) to build a fully typed CLI application that runs on Node.js.
 
 [`@grpc/proto-loader`](https://www.npmjs.com/package/@grpc/proto-loader) to used to [generate the types](https://github.com/grpc/grpc-node/pull/1474), as well as load the protobuf files at runtime using [`protobuf.js`](https://www.npmjs.com/package/protobufjs) instead of [`google-protobuf`](https://www.npmjs.com/package/google-protobuf).
 
