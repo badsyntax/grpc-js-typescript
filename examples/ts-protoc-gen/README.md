@@ -40,7 +40,7 @@ npm run build:proto
 
 This simple app demonstrates the different gRPC calls you can perform.
 
-First generated the types and build the application files:
+First generate the types and build the application files:
 
 ```sh
 npm run build
