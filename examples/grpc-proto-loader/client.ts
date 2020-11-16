@@ -70,16 +70,13 @@ function doServerStreamingCall() {
 }
 
 function doClientStreamingCall() {
-  const stream = client.clientStreamingCall(
-    (error?: grpc.ServiceError) => {
-      if (error) {
-        console.error(error.message);
-      }
+  const stream = client.clientStreamingCall((error?: grpc.ServiceError) => {
+    if (error) {
+      console.error(error.message);
     }
-  );
-  // FIXME: this should be clientMessage
+  });
   stream.write({
-    serverMessage: 'Message from client',
+    clientMessage: 'Message from client',
   });
 }
 
