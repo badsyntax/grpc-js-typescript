@@ -25,9 +25,7 @@ sourceSets {
 
 protobuf {
   protoc {
-    path = file(
-      './node_modules/.bin/grpc_tools_node_protoc' + (isWindows ? '.cmd' : '')
-    )
+    artifact = "com.google.protobuf:protoc:${protocVersion}"
   }
   plugins {
     grpc {
