@@ -24,6 +24,11 @@ sourceSets {
 }
 
 protobuf {
+  protoc {
+    path = file(
+      './node_modules/.bin/grpc_tools_node_protoc' + (isWindows ? '.cmd' : '')
+    )
+  }
   plugins {
     grpc {
       path = file(
