@@ -1,6 +1,11 @@
 # grpc-js types
 
-This repo shows various different methods of working with TypeScript & gRPC (using [`@grpc/grpc-js`](https://www.npmjs.com/package/@grpc/grpc-js)).
+This repo shows how to use gRPC with TypeScript. 
+
+In all cases, [`@grpc/grpc-js`](https://www.npmjs.com/package/@grpc/grpc-js) is used as [`grpc`](https://www.npmjs.com/package/grpc) is now [effectively deprecated](https://grpc.io/blog/grpc-js-1.0/).
+
+TypeScript types are generated at build time from the proto files using different tools as demonstrated in this repo.
+
 
 ## Examples
 
