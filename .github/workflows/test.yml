@@ -1,0 +1,24 @@
+name: Test
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+    name: Build examples
+    steps:
+      - uses: actions/checkout@v1
+      - name: Build gradle-ts-protoc-gen
+        run: cd examples/gradle-ts-protoc-gen && npm run build
+      - name: Build grpc_tools_node_protoc_ts
+        run: cd examples/grpc_tools_node_protoc_ts && npm run build
+      - name: Build grpc-proto-loader
+        run: cd examples/grpc-proto-loader && npm run build
+      - name: Build grpc-web
+        run: cd examples/grpc-web && npm run build
+      - name: Build ts-protoc-gen
+        run: cd examples/ts-protoc-gen && npm run build
