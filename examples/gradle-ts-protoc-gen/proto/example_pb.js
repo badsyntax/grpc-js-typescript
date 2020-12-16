@@ -177,9 +177,12 @@ proto.example_package.ServerMessage.prototype.getServerMessage = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.example_package.ServerMessage} returns this
+ */
 proto.example_package.ServerMessage.prototype.setServerMessage = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -304,9 +307,12 @@ proto.example_package.ClientMessage.prototype.getClientMessage = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.example_package.ClientMessage} returns this
+ */
 proto.example_package.ClientMessage.prototype.setClientMessage = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 

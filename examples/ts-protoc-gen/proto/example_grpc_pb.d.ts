@@ -15,6 +15,13 @@ interface IExampleService extends grpc.ServiceDefinition<grpc.UntypedServiceImpl
 
 export const ExampleService: IExampleService;
 
+export interface IExampleServer extends grpc.UntypedServiceImplementation {
+  unaryCall: grpc.handleUnaryCall<proto_example_pb.ClientMessage, proto_example_pb.ServerMessage>;
+  serverStreamingCall: grpc.handleServerStreamingCall<proto_example_pb.ClientMessage, proto_example_pb.ServerMessage>;
+  clientStreamingCall: grpc.handleClientStreamingCall<proto_example_pb.ClientMessage, proto_example_pb.ServerMessage>;
+  bidirectionalStreamingCall: grpc.handleBidiStreamingCall<proto_example_pb.ClientMessage, proto_example_pb.ServerMessage>;
+}
+
 export class ExampleClient extends grpc.Client {
   constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
   unaryCall(argument: proto_example_pb.ClientMessage, callback: grpc.requestCallback<proto_example_pb.ServerMessage>): grpc.ClientUnaryCall;
