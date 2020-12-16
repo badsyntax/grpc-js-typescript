@@ -12,13 +12,35 @@ jobs:
     name: Build examples
     steps:
       - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 15
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 15
+          architecture: x64
       - name: Build gradle-ts-protoc-gen
-        run: cd examples/gradle-ts-protoc-gen && npm i && npm run build
+        run: |
+          cd examples/gradle-ts-protoc-gen
+          npm i
+          npm run build
       - name: Build grpc_tools_node_protoc_ts
-        run: cd examples/grpc_tools_node_protoc_ts && npm i && npm run build
+        run: |
+          cd examples/grpc_tools_node_protoc_ts
+          npm i
+          npm run build
       - name: Build grpc-proto-loader
-        run: cd examples/grpc-proto-loader && npm i && npm run build
+        run: |
+          cd examples/grpc-proto-loader
+          npm i
+          npm run build
       - name: Build grpc-web
-        run: cd examples/grpc-web && npm i && npm run build
+        run: |
+          cd examples/grpc-web
+          npm i
+          npm run build
       - name: Build ts-protoc-gen
-        run: cd examples/ts-protoc-gen && npm i && npm run build
+        run: |
+          cd examples/ts-protoc-gen
+          npm i
+          npm run build
