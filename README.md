@@ -6,17 +6,29 @@ In all cases, [`@grpc/grpc-js`](https://www.npmjs.com/package/@grpc/grpc-js) is 
 
 TypeScript types are generated at build time from the proto files using different tools as demonstrated in this repo.
 
-
 ## Examples
 
 Each example is a separate application. Refer to the README in each project for more information.
 
-- [grpc-proto-loader](./examples/grpc-proto-loader) - Uses [@grpc/proto-loader](https://www.npmjs.com/package/@grpc/proto-loader) to generate the types (no proto compiler used)
+- [grpc-proto-loader](./examples/grpc-proto-loader) 
+- [ts-protoc-gen](./examples/ts-protoc-gen) 
+- [gradle-ts-protoc-gen](./examples/gradle-ts-protoc-gen) 
+- [grpc_tools_node_protoc_ts](./examples/grpc_tools_node_protoc_ts)
+- [grpc-web](./examples/grpc-web) 
 
-- [ts-protoc-gen](./examples/ts-protoc-gen) - Uses the [proto compiler](https://www.npmjs.com/package/grpc-tools) & [`ts-protoc-gen`](https://www.npmjs.com/package/ts-protoc-gen) to generate the types
+## Contributions
 
-- [gradle-ts-protoc-gen](./examples/gradle-ts-protoc-gen) - Uses [Gradle](https://gradle.org/), the [proto compiler](https://www.npmjs.com/package/grpc-tools) & [`ts-protoc-gen`](https://www.npmjs.com/package/ts-protoc-gen) to generate the types
+These are the various contributions I made to help with gRPC & TypeScript support:
 
-- [grpc_tools_node_protoc_ts](./examples/grpc_tools_node_protoc_ts) - Uses the [proto compiler](https://www.npmjs.com/package/grpc-tools) & [`grpc_tools_node_protoc_ts`](https://www.npmjs.com/package/grpc_tools_node_protoc_ts) to generate the types
-
-- [grpc-web](./examples/grpc-web) - Uses the [proto compiler](https://www.npmjs.com/package/grpc-tools) & [`ts-protoc-gen`](https://www.npmjs.com/package/ts-protoc-gen) to generate the types
+- https://github.com/grpc/grpc-node/pull/1368
+- https://github.com/grpc/grpc-node/pull/1380
+- https://github.com/grpc/grpc-node/pull/1387
+- https://github.com/grpc/grpc-node/pull/1419
+- https://github.com/grpc/grpc-node/pull/1454
+- https://github.com/grpc/grpc-node/pull/1587
+- https://github.com/grpc/grpc-node/pull/1590
+- https://github.com/murgatroid99/grpc-node/pull/1
+- https://github.com/murgatroid99/grpc-node/pull/2
+- https://github.com/murgatroid99/grpc-node/pull/3 
+- https://github.com/improbable-eng/ts-protoc-gen/pull/236
+- https://github.com/improbable-eng/ts-protoc-gen/pull/247
