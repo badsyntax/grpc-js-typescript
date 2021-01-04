@@ -1,4 +1,4 @@
-# grpc-js types
+# gRPC TypeScript
 
 This repo shows how to use gRPC with TypeScript.
 
