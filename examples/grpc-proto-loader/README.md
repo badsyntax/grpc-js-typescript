@@ -6,10 +6,6 @@ This example shows how to use [`@grpc/proto-loader`](https://www.npmjs.com/packa
 
 _No proto compiler is used. It's all JavaScript._
 
-## Issues with this approach
-
-None that I'm aware of!
-
 ## App layout
 
 - [package.json](./package.json) - Dependencies and build scripts
