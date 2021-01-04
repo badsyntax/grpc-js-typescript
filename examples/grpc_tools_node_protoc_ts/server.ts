@@ -28,7 +28,7 @@ const exampleServer: IExampleServer = {
   },
 
   clientStreamingCall(
-    call: grpc.ServerReadableStream<ClientMessage, ServerMessage>,
+    call: grpc.ServerReadableStream<ClientMessage, ServerMessage>
   ) {
     call.on('data', (clientMessage: ClientMessage) => {
       console.log(
@@ -54,9 +54,6 @@ const exampleServer: IExampleServer = {
 
 function getServer(): grpc.Server {
   const server = new grpc.Server();
-  // The following type is broken because `IExampleServer` does not extend from `grpc.UntypedServiceImplementation`
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   server.addService(ExampleService, exampleServer);
   return server;
 }

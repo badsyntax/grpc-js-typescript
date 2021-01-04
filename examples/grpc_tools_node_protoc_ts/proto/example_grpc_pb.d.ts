@@ -54,7 +54,7 @@ interface IExampleService_IbidirectionalStreamingCall extends grpc.MethodDefinit
 
 export const ExampleService: IExampleService;
 
-export interface IExampleServer {
+export interface IExampleServer extends grpc.UntypedServiceImplementation {
     unaryCall: grpc.handleUnaryCall<proto_example_pb.ClientMessage, proto_example_pb.ServerMessage>;
     serverStreamingCall: grpc.handleServerStreamingCall<proto_example_pb.ClientMessage, proto_example_pb.ServerMessage>;
     clientStreamingCall: handleClientStreamingCall<proto_example_pb.ClientMessage, proto_example_pb.ServerMessage>;
