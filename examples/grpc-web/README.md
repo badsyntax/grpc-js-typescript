@@ -21,6 +21,8 @@ npm install
 
 ### Running the app
 
+(Note, docker is required to run the envoy proxy.)
+
 Run the demo:
 
 ```bash
