@@ -1,6 +1,6 @@
 # gRPC TypeScript
 
-This repo shows how to use gRPC with TypeScript.
+This repo shows how to use gRPC with TypeScript & Node.js.
 
 In all cases, [`@grpc/grpc-js`](https://www.npmjs.com/package/@grpc/grpc-js) is used as [`grpc`](https://www.npmjs.com/package/grpc) is now [effectively deprecated](https://grpc.io/blog/grpc-js-1.0/).
 
