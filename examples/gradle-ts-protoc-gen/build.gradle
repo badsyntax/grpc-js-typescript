@@ -1,17 +1,16 @@
 
 plugins {
   id 'java'
-  id 'com.google.protobuf' version '0.8.13'
+  id 'com.google.protobuf' version '0.8.16'
   id 'com.github.jlouns.cpe' version '0.5.0'
 }
 
-project.ext.set('protobufVersion', '3.12.0')
+project.ext.set('protobufVersion', '3.16.0')
 project.ext.set('protocVersion', project.protobufVersion)
 
 def isWindows = System.getProperty('os.name').toLowerCase().contains('windows')
 
 repositories {
-  jcenter()
   mavenCentral()
 }
 
@@ -25,7 +24,12 @@ sourceSets {
 
 protobuf {
   protoc {
-    artifact = "com.google.protobuf:protoc:${protocVersion}"
+    if (osdetector.os == 'osx') {
+      // Required for arm64 support on MacOS
+      artifact = "com.google.protobuf:protoc:${protocVersion}:osx-x86_64"
+    } else {
+      artifact = "com.google.protobuf:protoc:${protocVersion}"
+    }
   }
   plugins {
     grpc {

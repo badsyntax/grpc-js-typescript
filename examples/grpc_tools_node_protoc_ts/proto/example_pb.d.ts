@@ -10,7 +10,6 @@ export class ServerMessage extends jspb.Message {
     getServerMessage(): string;
     setServerMessage(value: string): ServerMessage;
 
-
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): ServerMessage.AsObject;
     static toObject(includeInstance: boolean, msg: ServerMessage): ServerMessage.AsObject;
@@ -30,7 +29,6 @@ export namespace ServerMessage {
 export class ClientMessage extends jspb.Message { 
     getClientMessage(): string;
     setClientMessage(value: string): ClientMessage;
-
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): ClientMessage.AsObject;

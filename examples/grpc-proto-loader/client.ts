@@ -5,9 +5,9 @@ import { ServerMessage } from './proto/example_package/ServerMessage';
 
 const host = '0.0.0.0:9090';
 const packageDefinition = protoLoader.loadSync('./proto/example.proto');
-const proto = (grpc.loadPackageDefinition(
+const proto = grpc.loadPackageDefinition(
   packageDefinition
-) as unknown) as ProtoGrpcType;
+) as unknown as ProtoGrpcType;
 
 const client = new proto.example_package.Example(
   host,
