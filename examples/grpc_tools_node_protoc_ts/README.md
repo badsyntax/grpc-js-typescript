@@ -17,6 +17,9 @@ Install dependencies:
 
 ```sh
 npm install
+
+# Apple M1 users should install for x64 due to grpc-tools not supporting arm64
+npm i --target_arch=x64
 ```
 
 Use [`grpc_tools_node_protoc_ts`](https://www.npmjs.com/package/grpc_tools_node_protoc_ts) to generate the TypeScript files:

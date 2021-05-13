@@ -1,6 +1,7 @@
 // Original file: proto/example.proto
 
 import type * as grpc from '@grpc/grpc-js'
+import type { MethodDefinition } from '@grpc/proto-loader'
 import type { ClientMessage as _example_package_ClientMessage, ClientMessage__Output as _example_package_ClientMessage__Output } from '../example_package/ClientMessage';
 import type { ServerMessage as _example_package_ServerMessage, ServerMessage__Output as _example_package_ServerMessage__Output } from '../example_package/ServerMessage';
 
@@ -44,4 +45,11 @@ export interface ExampleHandlers extends grpc.UntypedServiceImplementation {
   
   unaryCall: grpc.handleUnaryCall<_example_package_ClientMessage__Output, _example_package_ServerMessage>;
   
+}
+
+export interface ExampleDefinition extends grpc.ServiceDefinition {
+  bidirectionalStreamingCall: MethodDefinition<_example_package_ClientMessage, _example_package_ServerMessage, _example_package_ClientMessage__Output, _example_package_ServerMessage__Output>
+  clientStreamingCall: MethodDefinition<_example_package_ClientMessage, _example_package_ServerMessage, _example_package_ClientMessage__Output, _example_package_ServerMessage__Output>
+  serverStreamingCall: MethodDefinition<_example_package_ClientMessage, _example_package_ServerMessage, _example_package_ClientMessage__Output, _example_package_ServerMessage__Output>
+  unaryCall: MethodDefinition<_example_package_ClientMessage, _example_package_ServerMessage, _example_package_ClientMessage__Output, _example_package_ServerMessage__Output>
 }
