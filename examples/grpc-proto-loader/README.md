@@ -24,7 +24,7 @@ npm install
 Use [`@grpc/proto-loader`](https://www.npmjs.com/package/@grpc/proto-loader) to generate the TypeScript files:
 
 ```sh
-proto-loader-gen-types --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js --outDir=proto/ proto/*.proto
+$(npm bin)/proto-loader-gen-types --longs=String --enums=String --defaults --oneofs --grpcLib=@grpc/grpc-js --outDir=proto/ proto/*.proto
 ```
 
 This is aliased as a npm script:
