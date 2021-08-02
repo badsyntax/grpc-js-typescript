@@ -1,5 +1,7 @@
 # gRPC TypeScript
 
+[![Test](https://github.com/badsyntax/grpc-js-typescript/actions/workflows/test.yml/badge.svg)](https://github.com/badsyntax/grpc-js-typescript/actions/workflows/test.yml)
+
 This repo shows how to use gRPC with TypeScript & Node.js.
 
 In all cases, [`@grpc/grpc-js`](https://www.npmjs.com/package/@grpc/grpc-js) is used as [`grpc`](https://www.npmjs.com/package/grpc) is now [effectively deprecated](https://grpc.io/blog/grpc-js-1.0/).
