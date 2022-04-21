@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run build:typescript && npm run build:webpack",
     "build:typescript": "tsc -p .",
-    "build:proto": "./compile-proto.sh",
+    "build:proto": "node scripts/compile-proto.js",
     "build:webpack": "webpack ./client.js -c webpack.config.js",
     "watch:typescript": "npm run build:typescript -- -w",
     "watch:webpack": "npm run build:webpack -- -w",
@@ -17,7 +17,7 @@
     "lint:fix": "npm run lint:fix:prettier && npm run lint:eslint -- --fix",
     "lint:fix:prettier": "prettier --write '**/*.{ts,tsx,js,json,svg,md,yml}'",
     "start:server": "node server",
-    "start:proxy": "docker run -d -p 8080:8080 -v \"$(pwd)\"/envoy.yaml:/etc/envoy/envoy.yaml:ro envoyproxy/envoy:v1.15.0"
+    "start:proxy": "node scripts/dockerRun.js"
   },
   "keywords": [],
   "author": "",
