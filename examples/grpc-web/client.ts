@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-import { Error as GrpcWebError } from 'grpc-web';
+import { RpcError as GrpcWebError } from 'grpc-web';
 import { ChatClient } from './proto/chat_grpc_web_pb';
 import { ClientMessage, ServerMessage } from './proto/chat_pb';
 

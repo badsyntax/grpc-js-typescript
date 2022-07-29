@@ -48,7 +48,7 @@ function doUnaryCall() {
     {
       clientMessage: 'Message from client',
     },
-    (error?: grpc.ServiceError, serverMessage?: ServerMessage) => {
+    (error?: grpc.ServiceError | null, serverMessage?: ServerMessage) => {
       if (error) {
         console.error(error.message);
       } else if (serverMessage) {
@@ -70,7 +70,7 @@ function doServerStreamingCall() {
 }
 
 function doClientStreamingCall() {
-  const stream = client.clientStreamingCall((error?: grpc.ServiceError) => {
+  const stream = client.clientStreamingCall((error?: grpc.ServiceError | null) => {
     if (error) {
       console.error(error.message);
     }

@@ -16,6 +16,10 @@ The [`ts-protoc-gen`](https://www.npmjs.com/package/ts-protoc-gen) compiler plug
 
 ```sh
 npm install
+
+# Apple M1 users should install for x64 due to grpc-tools not supporting arm64
+npm install --target_arch=x64
+
 ./compile-proto.sh
 ```
 

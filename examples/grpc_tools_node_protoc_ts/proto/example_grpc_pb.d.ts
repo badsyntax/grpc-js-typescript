@@ -5,7 +5,6 @@
 /* eslint-disable */
 
 import * as grpc from "@grpc/grpc-js";
-import {handleClientStreamingCall} from "@grpc/grpc-js/build/src/server-call";
 import * as proto_example_pb from "../proto/example_pb";
 
 interface IExampleService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
@@ -57,7 +56,7 @@ export const ExampleService: IExampleService;
 export interface IExampleServer extends grpc.UntypedServiceImplementation {
     unaryCall: grpc.handleUnaryCall<proto_example_pb.ClientMessage, proto_example_pb.ServerMessage>;
     serverStreamingCall: grpc.handleServerStreamingCall<proto_example_pb.ClientMessage, proto_example_pb.ServerMessage>;
-    clientStreamingCall: handleClientStreamingCall<proto_example_pb.ClientMessage, proto_example_pb.ServerMessage>;
+    clientStreamingCall: grpc.handleClientStreamingCall<proto_example_pb.ClientMessage, proto_example_pb.ServerMessage>;
     bidirectionalStreamingCall: grpc.handleBidiStreamingCall<proto_example_pb.ClientMessage, proto_example_pb.ServerMessage>;
 }
 

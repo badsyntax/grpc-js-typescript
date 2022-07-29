@@ -11,28 +11,28 @@ export interface ExampleClient extends grpc.Client {
   bidirectionalStreamingCall(metadata: grpc.Metadata, options?: grpc.CallOptions): grpc.ClientDuplexStream<_example_package_ClientMessage, _example_package_ServerMessage__Output>;
   bidirectionalStreamingCall(options?: grpc.CallOptions): grpc.ClientDuplexStream<_example_package_ClientMessage, _example_package_ServerMessage__Output>;
   
-  clientStreamingCall(metadata: grpc.Metadata, options: grpc.CallOptions, callback: (error?: grpc.ServiceError, result?: _example_package_ServerMessage__Output) => void): grpc.ClientWritableStream<_example_package_ClientMessage>;
-  clientStreamingCall(metadata: grpc.Metadata, callback: (error?: grpc.ServiceError, result?: _example_package_ServerMessage__Output) => void): grpc.ClientWritableStream<_example_package_ClientMessage>;
-  clientStreamingCall(options: grpc.CallOptions, callback: (error?: grpc.ServiceError, result?: _example_package_ServerMessage__Output) => void): grpc.ClientWritableStream<_example_package_ClientMessage>;
-  clientStreamingCall(callback: (error?: grpc.ServiceError, result?: _example_package_ServerMessage__Output) => void): grpc.ClientWritableStream<_example_package_ClientMessage>;
-  clientStreamingCall(metadata: grpc.Metadata, options: grpc.CallOptions, callback: (error?: grpc.ServiceError, result?: _example_package_ServerMessage__Output) => void): grpc.ClientWritableStream<_example_package_ClientMessage>;
-  clientStreamingCall(metadata: grpc.Metadata, callback: (error?: grpc.ServiceError, result?: _example_package_ServerMessage__Output) => void): grpc.ClientWritableStream<_example_package_ClientMessage>;
-  clientStreamingCall(options: grpc.CallOptions, callback: (error?: grpc.ServiceError, result?: _example_package_ServerMessage__Output) => void): grpc.ClientWritableStream<_example_package_ClientMessage>;
-  clientStreamingCall(callback: (error?: grpc.ServiceError, result?: _example_package_ServerMessage__Output) => void): grpc.ClientWritableStream<_example_package_ClientMessage>;
+  clientStreamingCall(metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_example_package_ServerMessage__Output>): grpc.ClientWritableStream<_example_package_ClientMessage>;
+  clientStreamingCall(metadata: grpc.Metadata, callback: grpc.requestCallback<_example_package_ServerMessage__Output>): grpc.ClientWritableStream<_example_package_ClientMessage>;
+  clientStreamingCall(options: grpc.CallOptions, callback: grpc.requestCallback<_example_package_ServerMessage__Output>): grpc.ClientWritableStream<_example_package_ClientMessage>;
+  clientStreamingCall(callback: grpc.requestCallback<_example_package_ServerMessage__Output>): grpc.ClientWritableStream<_example_package_ClientMessage>;
+  clientStreamingCall(metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_example_package_ServerMessage__Output>): grpc.ClientWritableStream<_example_package_ClientMessage>;
+  clientStreamingCall(metadata: grpc.Metadata, callback: grpc.requestCallback<_example_package_ServerMessage__Output>): grpc.ClientWritableStream<_example_package_ClientMessage>;
+  clientStreamingCall(options: grpc.CallOptions, callback: grpc.requestCallback<_example_package_ServerMessage__Output>): grpc.ClientWritableStream<_example_package_ClientMessage>;
+  clientStreamingCall(callback: grpc.requestCallback<_example_package_ServerMessage__Output>): grpc.ClientWritableStream<_example_package_ClientMessage>;
   
   serverStreamingCall(argument: _example_package_ClientMessage, metadata: grpc.Metadata, options?: grpc.CallOptions): grpc.ClientReadableStream<_example_package_ServerMessage__Output>;
   serverStreamingCall(argument: _example_package_ClientMessage, options?: grpc.CallOptions): grpc.ClientReadableStream<_example_package_ServerMessage__Output>;
   serverStreamingCall(argument: _example_package_ClientMessage, metadata: grpc.Metadata, options?: grpc.CallOptions): grpc.ClientReadableStream<_example_package_ServerMessage__Output>;
   serverStreamingCall(argument: _example_package_ClientMessage, options?: grpc.CallOptions): grpc.ClientReadableStream<_example_package_ServerMessage__Output>;
   
-  unaryCall(argument: _example_package_ClientMessage, metadata: grpc.Metadata, options: grpc.CallOptions, callback: (error?: grpc.ServiceError, result?: _example_package_ServerMessage__Output) => void): grpc.ClientUnaryCall;
-  unaryCall(argument: _example_package_ClientMessage, metadata: grpc.Metadata, callback: (error?: grpc.ServiceError, result?: _example_package_ServerMessage__Output) => void): grpc.ClientUnaryCall;
-  unaryCall(argument: _example_package_ClientMessage, options: grpc.CallOptions, callback: (error?: grpc.ServiceError, result?: _example_package_ServerMessage__Output) => void): grpc.ClientUnaryCall;
-  unaryCall(argument: _example_package_ClientMessage, callback: (error?: grpc.ServiceError, result?: _example_package_ServerMessage__Output) => void): grpc.ClientUnaryCall;
-  unaryCall(argument: _example_package_ClientMessage, metadata: grpc.Metadata, options: grpc.CallOptions, callback: (error?: grpc.ServiceError, result?: _example_package_ServerMessage__Output) => void): grpc.ClientUnaryCall;
-  unaryCall(argument: _example_package_ClientMessage, metadata: grpc.Metadata, callback: (error?: grpc.ServiceError, result?: _example_package_ServerMessage__Output) => void): grpc.ClientUnaryCall;
-  unaryCall(argument: _example_package_ClientMessage, options: grpc.CallOptions, callback: (error?: grpc.ServiceError, result?: _example_package_ServerMessage__Output) => void): grpc.ClientUnaryCall;
-  unaryCall(argument: _example_package_ClientMessage, callback: (error?: grpc.ServiceError, result?: _example_package_ServerMessage__Output) => void): grpc.ClientUnaryCall;
+  unaryCall(argument: _example_package_ClientMessage, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_example_package_ServerMessage__Output>): grpc.ClientUnaryCall;
+  unaryCall(argument: _example_package_ClientMessage, metadata: grpc.Metadata, callback: grpc.requestCallback<_example_package_ServerMessage__Output>): grpc.ClientUnaryCall;
+  unaryCall(argument: _example_package_ClientMessage, options: grpc.CallOptions, callback: grpc.requestCallback<_example_package_ServerMessage__Output>): grpc.ClientUnaryCall;
+  unaryCall(argument: _example_package_ClientMessage, callback: grpc.requestCallback<_example_package_ServerMessage__Output>): grpc.ClientUnaryCall;
+  unaryCall(argument: _example_package_ClientMessage, metadata: grpc.Metadata, options: grpc.CallOptions, callback: grpc.requestCallback<_example_package_ServerMessage__Output>): grpc.ClientUnaryCall;
+  unaryCall(argument: _example_package_ClientMessage, metadata: grpc.Metadata, callback: grpc.requestCallback<_example_package_ServerMessage__Output>): grpc.ClientUnaryCall;
+  unaryCall(argument: _example_package_ClientMessage, options: grpc.CallOptions, callback: grpc.requestCallback<_example_package_ServerMessage__Output>): grpc.ClientUnaryCall;
+  unaryCall(argument: _example_package_ClientMessage, callback: grpc.requestCallback<_example_package_ServerMessage__Output>): grpc.ClientUnaryCall;
   
 }
 
