@@ -1,5 +1,5 @@
 import type * as grpc from '@grpc/grpc-js';
-import type { ServiceDefinition, EnumTypeDefinition, MessageTypeDefinition } from '@grpc/proto-loader';
+import type { MessageTypeDefinition } from '@grpc/proto-loader';
 
 import type { ExampleClient as _example_package_ExampleClient, ExampleDefinition as _example_package_ExampleDefinition } from './example_package/Example';
 
