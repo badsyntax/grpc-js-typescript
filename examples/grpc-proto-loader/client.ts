@@ -4,7 +4,12 @@ import { ProtoGrpcType } from './proto/example';
 import { ServerMessage } from './proto/example_package/ServerMessage';
 
 const host = '0.0.0.0:9090';
-const packageDefinition = protoLoader.loadSync('./proto/example.proto');
+const packageDefinition = protoLoader.loadSync('./proto/example.proto', {
+  longs: String,
+  enums: String,
+  defaults: true,
+  oneofs: true,
+});
 const proto = grpc.loadPackageDefinition(
   packageDefinition
 ) as unknown as ProtoGrpcType;

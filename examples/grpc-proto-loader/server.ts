@@ -53,7 +53,12 @@ const exampleServer: ExampleHandlers = {
 };
 
 function getServer(): grpc.Server {
-  const packageDefinition = protoLoader.loadSync('./proto/example.proto');
+  const packageDefinition = protoLoader.loadSync('./proto/example.proto', {
+    longs: String,
+    enums: String,
+    defaults: true,
+    oneofs: true,
+  });
   const proto = grpc.loadPackageDefinition(
     packageDefinition
   ) as unknown as ProtoGrpcType;
