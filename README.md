@@ -24,7 +24,7 @@ Thanks to [this issue](https://github.com/agreatfool/grpc_tools_node_protoc_ts/i
 
 ## Contributions
 
-<details><summary>Contributions I made to help with gRPC & TypeScript support</summary>
+Contributions I made to help with gRPC & TypeScript support:
 
 - https://github.com/grpc/grpc-node/pull/1368
 - https://github.com/grpc/grpc-node/pull/1380
@@ -38,5 +38,3 @@ Thanks to [this issue](https://github.com/agreatfool/grpc_tools_node_protoc_ts/i
 - https://github.com/murgatroid99/grpc-node/pull/3
 - https://github.com/improbable-eng/ts-protoc-gen/pull/236
 - https://github.com/improbable-eng/ts-protoc-gen/pull/247
-
-</details>
